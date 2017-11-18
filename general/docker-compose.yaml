@@ -1,0 +1,26 @@
+version: '3'
+services:
+    rabbit:
+        image: rabbitmq:3.6-management
+        environment:
+            RABBITMQ_DEFAULT_USER: musicroom
+            RABBITMQ_DEFAULT_PASS: secret
+        ports:
+            - "15672:15672"
+        restart: always
+
+    api:
+        build: mr-api
+    db:
+        image: dgraph
+        ports:
+            -  "8180:8080"
+        volumes:
+            - dgraph:/dgraph
+        restart: always
+
+    mail:
+        build: mr-mail
+        restart: always
+volumes:
+    dgraph:
