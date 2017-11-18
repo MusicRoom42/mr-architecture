@@ -13,8 +13,8 @@ WORKDIR ${TARGET}
 
 ADD docker-compose.yaml .
 
-RUN git clone https://github.com/MusicRoom42/mr-api.git \
-    && git clone https://github.com/MusicRoom42/mr-mail.git
+ADD git@github.com:MusicRoom42/mr-api.git \
+ADD git@github.com:MusicRoom42/mr-mail.git
 
 # RUN addgroup docker \
 #         && adduser root docker
