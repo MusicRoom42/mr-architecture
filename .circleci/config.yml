@@ -2,14 +2,12 @@ version: 2
 jobs:
   build:
     docker:
-      - build: general
-      - volumes:
-          - "/var/run/docker.sock:/var/run/docker.sock"
+      - build: debian:stretch
     steps:
       - checkout
       - run:
-          name: Greeting
-          command: echo Hello, world.
+          name: Dockerfile
+          command: docker-compose up
       - run:
           name: Print the Current Time
           command: date
