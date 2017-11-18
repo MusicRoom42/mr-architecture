@@ -2,7 +2,11 @@ version: 2
 jobs:
   build:
     docker:
-      - image: debian:stretch
+      - build:
+        - context: ./general
+        - dockerfile: Dockerfile
+      - volumes:
+            - "/var/run/docker.sock:/var/run/docker.sock"
     steps:
       - checkout
       - run:
