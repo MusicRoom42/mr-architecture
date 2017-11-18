@@ -2,11 +2,9 @@ version: 2
 jobs:
   build:
     docker:
-      - build:
-        - context: ./general
-        - dockerfile: Dockerfile
+      - build: general
       - volumes:
-            - "/var/run/docker.sock:/var/run/docker.sock"
+          - "/var/run/docker.sock:/var/run/docker.sock"
     steps:
       - checkout
       - run:
